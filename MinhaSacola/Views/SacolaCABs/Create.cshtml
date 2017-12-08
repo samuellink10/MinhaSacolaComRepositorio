@@ -1,0 +1,100 @@
+﻿@model MinhaSacola.Models.SacolaCABProduto
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Criação Sacola</h2>
+
+
+<hr />
+<div class="row">
+
+	<div class="col-md-4">
+
+		<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+		<label asp-for="Sacola.Descricao" class="control-label"></label>
+		<div class="form-group">
+			
+			<input asp-for="Sacola.Descricao" class="form-control" />
+			<span asp-validation-for="Sacola.Descricao" class="text-danger"></span>
+		</div>
+
+
+	</div>
+
+</div>
+<div class="row">
+	<div clss="col-md-12">
+		<div class="form-group">
+			<input id="Btnsubmit" value="Criar Sacolar" class="btn btn-success" />
+		</div>
+	</div>
+	</div>
+<div class="row">
+		<div class="col-md-12">
+			<h3>Selecione os produtos em sua sacola!</h3>
+		</div>
+	</div>
+<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>
+					Seleção de Produtos
+				</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model.produto)
+			{
+				<tr>
+					<td>
+						<input type='checkbox' id="@item.Id" name='heroChecked' /> @Html.DisplayFor(modelItem => item.Descricao)
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+
+
+
+	<div>
+		<a asp-action="Index">Voltar</a>
+	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#Btnsubmit").click(function () {
+				var produtos = [];
+				$("input:checked").each(function () {
+					var id = $(this).attr("id");
+					produtos.push(id);
+				});
+
+				var Descricao = $("#Sacola_Descricao	").val();
+
+				$.ajax({
+					type: "GET",
+					url: "/SacolaCABs/CreateSacola",
+					traditional: true,
+					data: {
+						Descricao: Descricao,
+						produtos: produtos
+					},
+					contentType: "application/json",
+					success: function (data) {
+						alert("Sacola criada com sucesso!");
+					},
+					error: function () {
+						alert("Error occured!!")
+					}
+				});
+			});
+		});
+	</script>
+
+	@section Scripts {
+		@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+	}

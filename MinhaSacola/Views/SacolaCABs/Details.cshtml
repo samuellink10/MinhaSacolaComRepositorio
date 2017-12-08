@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MinhaSacola.Models.Produto>
+
+@{
+	ViewData["Title"] = "Details";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+	<h4>SacolaCAB</h4>
+	<hr />
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Descrição</th>
+
+				<th>Adicionar</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(modelItem => item.Descricao) 
+					</td>
+					<td>
+						<a asp-action="Edit" asp-route-id="@item.Id">Add</a>
+					</td>
+				</tr>
+
+			}
+		</tbody>
+</table>
+</div>
+
+<br>
+
+<div>
+	<a asp-action="Index">Back to List</a>
+</div>

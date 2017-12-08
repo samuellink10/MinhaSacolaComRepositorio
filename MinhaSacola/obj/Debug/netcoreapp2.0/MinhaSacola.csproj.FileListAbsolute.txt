@@ -1,0 +1,11 @@
+c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\bin\Debug\netcoreapp2.0\MinhaSacola.deps.json
+c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\bin\Debug\netcoreapp2.0\MinhaSacola.runtimeconfig.json
+c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\bin\Debug\netcoreapp2.0\MinhaSacola.runtimeconfig.dev.json
+c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\bin\Debug\netcoreapp2.0\MinhaSacola.dll
+c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\obj\Debug\netcoreapp2.0\MinhaSacola.csprojResolveAssemblyReference.cache
+c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\obj\Debug\netcoreapp2.0\MinhaSacola.csproj.CoreCompileInputs.cache
+c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\obj\Debug\netcoreapp2.0\MinhaSacola.AssemblyInfoInputs.cache
+c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\obj\Debug\netcoreapp2.0\MinhaSacola.AssemblyInfo.cs
+c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\bin\Debug\netcoreapp2.0\MinhaSacola.pdb
+c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\obj\Debug\netcoreapp2.0\MinhaSacola.dll
+c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\obj\Debug\netcoreapp2.0\MinhaSacola.pdb
