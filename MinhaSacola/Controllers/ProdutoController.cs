@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MinhaSacola.Data;
 using MinhaSacola.Models;
+using MinhaSacola.Repository;
 
 namespace MinhaSacola.Controllers
 {
@@ -26,7 +27,7 @@ namespace MinhaSacola.Controllers
             //List<Produto> lp = new List<Produto>();
             //lp.Add(p);
             //return View(lp.ToList()); 
-            return View(await _context.Produtos.ToListAsync());
+            return View(await ProdutoRepository.Instance.GetAll());
         }
 
         // GET: Produto/Details/5
@@ -37,8 +38,7 @@ namespace MinhaSacola.Controllers
                 return NotFound();
             }
 
-            var produto = await _context.Produtos
-                .SingleOrDefaultAsync(m => m.Id == id);
+            var produto = ProdutoRepository.Instance.Details(id);
             if (produto == null)
             {
                 return NotFound();
@@ -62,8 +62,7 @@ namespace MinhaSacola.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(produto);
-                await _context.SaveChangesAsync();
+                ProdutoRepository.Instance.Create(produto);
                 return RedirectToAction(nameof(Index));
             }
             return View(produto);
@@ -77,7 +76,7 @@ namespace MinhaSacola.Controllers
                 return NotFound();
             }
 
-            var produto = await _context.Produtos.SingleOrDefaultAsync(m => m.Id == id);
+            var produto = ProdutoRepository.Instance.Details(id);
             if (produto == null)
             {
                 return NotFound();
@@ -101,8 +100,7 @@ namespace MinhaSacola.Controllers
             {
                 try
                 {
-                    _context.Update(produto);
-                    await _context.SaveChangesAsync();
+                    ProdutoRepository.Instance.Update(produto);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -128,8 +126,7 @@ namespace MinhaSacola.Controllers
                 return NotFound();
             }
 
-            var produto = await _context.Produtos
-                .SingleOrDefaultAsync(m => m.Id == id);
+            var produto = ProdutoRepository.Instance.Details(id);
             if (produto == null)
             {
                 return NotFound();
@@ -143,9 +140,8 @@ namespace MinhaSacola.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var produto = await _context.Produtos.SingleOrDefaultAsync(m => m.Id == id);
-            _context.Produtos.Remove(produto);
-            await _context.SaveChangesAsync();
+            var produto = ProdutoRepository.Instance.Details(id);
+            ProdutoRepository.Instance.Delete(produto);
             return RedirectToAction(nameof(Index));
         }
 

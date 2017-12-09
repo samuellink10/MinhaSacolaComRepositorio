@@ -9,3 +9,10 @@ c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\obj
 c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\bin\Debug\netcoreapp2.0\MinhaSacola.pdb
 c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\obj\Debug\netcoreapp2.0\MinhaSacola.dll
 c:\users\81043\documents\visual studio 2017\Projects\MinhaSacola\MinhaSacola\obj\Debug\netcoreapp2.0\MinhaSacola.pdb
+C:\Users\Samuel\Desktop\MinhaSacolaComRepositorio\MinhaSacola\bin\Debug\netcoreapp2.0\MinhaSacola.deps.json
+C:\Users\Samuel\Desktop\MinhaSacolaComRepositorio\MinhaSacola\bin\Debug\netcoreapp2.0\MinhaSacola.runtimeconfig.json
+C:\Users\Samuel\Desktop\MinhaSacolaComRepositorio\MinhaSacola\bin\Debug\netcoreapp2.0\MinhaSacola.runtimeconfig.dev.json
+C:\Users\Samuel\Desktop\MinhaSacolaComRepositorio\MinhaSacola\obj\Debug\netcoreapp2.0\MinhaSacola.csprojResolveAssemblyReference.cache
+C:\Users\Samuel\Desktop\MinhaSacolaComRepositorio\MinhaSacola\obj\Debug\netcoreapp2.0\MinhaSacola.AssemblyInfo.cs
+C:\Users\Samuel\Desktop\MinhaSacolaComRepositorio\MinhaSacola\obj\Debug\netcoreapp2.0\MinhaSacola.dll
+C:\Users\Samuel\Desktop\MinhaSacolaComRepositorio\MinhaSacola\obj\Debug\netcoreapp2.0\MinhaSacola.pdb

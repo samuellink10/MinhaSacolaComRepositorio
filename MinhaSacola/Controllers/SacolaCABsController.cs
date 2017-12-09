@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MinhaSacola.Data;
 using MinhaSacola.Models;
+using MinhaSacola.Repository;
 
 namespace MinhaSacola.Controllers
 {
@@ -22,27 +23,17 @@ namespace MinhaSacola.Controllers
         // GET: SacolaCABs
         public async Task<IActionResult> Index()
         {
-            return View(await _context.SacolaCABs.ToListAsync());
+            var p = SacolaRepository.Instance.GetAll();
+            return View(p);
         }
 
         // GET: SacolaCABs/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var produtos = await _context.Produtos.ToListAsync();
-
-            return View(produtos);
-        }
 
         // GET: SacolaCABs/Create
         public IActionResult Create()
         {
             SacolaCABProduto sp = new SacolaCABProduto();
-            sp.produto = Conexao.Instance.Produtos.ToList();
+            sp.produto = ProdutoRepository.Instance.GetAll();
             return View(sp);
         }
 
@@ -54,18 +45,7 @@ namespace MinhaSacola.Controllers
         {
             if (ModelState.IsValid)
             {
-                SacolaCAB s = new SacolaCAB();
-                SacolaDET d = new SacolaDET();
-                s.Descricao = Descricao;
-                s.DataCriacao = DateTime.Now;
-                _context.SacolaCABs.Add(s);                
-                await _context.SaveChangesAsync();
-                foreach (var item in produtos)
-                {
-                    d.ProdutoId = item;
-                    d.SacolaCABId = s.Id;
-                    _context.SacolaDETs.Add(d);
-                }
+                SacolaRepository.Instance.Create(Descricao, produtos);
                 return RedirectToAction(nameof(Index));
             }
             return View();
@@ -79,7 +59,7 @@ namespace MinhaSacola.Controllers
                 return NotFound();
             }
 
-            var sacolaCAB = await _context.SacolaCABs.SingleOrDefaultAsync(m => m.Id == id);
+            var sacolaCAB = SacolaRepository.Instance.Edit(id);
             if (sacolaCAB == null)
             {
                 return NotFound();
@@ -103,8 +83,7 @@ namespace MinhaSacola.Controllers
             {
                 try
                 {
-                    _context.Update(sacolaCAB);
-                    await _context.SaveChangesAsync();
+                    SacolaRepository.Instance.Update(sacolaCAB);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -130,8 +109,7 @@ namespace MinhaSacola.Controllers
                 return NotFound();
             }
 
-            var sacolaCAB = await _context.SacolaCABs
-                .SingleOrDefaultAsync(m => m.Id == id);
+            var sacolaCAB = SacolaRepository.Instance.Edit(id);
             if (sacolaCAB == null)
             {
                 return NotFound();
@@ -145,9 +123,8 @@ namespace MinhaSacola.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var sacolaCAB = await _context.SacolaCABs.SingleOrDefaultAsync(m => m.Id == id);
-            _context.SacolaCABs.Remove(sacolaCAB);
-            await _context.SaveChangesAsync();
+            var sacolaCAB = SacolaRepository.Instance.Edit(id);
+            SacolaRepository.Instance.Delete(sacolaCAB);
             return RedirectToAction(nameof(Index));
         }
 
@@ -155,5 +132,7 @@ namespace MinhaSacola.Controllers
         {
             return _context.SacolaCABs.Any(e => e.Id == id);
         }
+
+
     }
 }
